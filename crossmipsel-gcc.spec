@@ -12,24 +12,24 @@ License:	GPL
 Group:		Development/Languages
 Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
 # Source0-md5:	a1c267b34f05c8660b24251865614d8b
-BuildRequires:	crossmipsel-binutils
+BuildRequires:	crossmipsel-binutils >= 2.15.91.0.1-2
 BuildRequires:	flex
 BuildRequires:	bison
 BuildRequires:	autoconf
 BuildRequires:	/bin/bash
-Requires:	crossmipsel-binutils
+Requires:	crossmipsel-binutils >= 2.15.91.0.1-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		cxx		0
 %define		target		mipsel-pld-linux
 %define		arch		%{_prefix}/%{target}
 %define		gccarch		%{_libdir}/gcc-lib/%{target}
 %define		gcclib		%{_libdir}/gcc-lib/%{target}/%{version}
+%define		_noautostrip	.*%{gcclib}/libgcc\\.a
 
 %description
 This package contains a cross-gcc which allows the creation of
 binaries to be run on little-endian Linux-MIPS (architecture
-"mipsel-linux") on i386-machines.
+"mipsel-linux") on other machines.
 
 %description -l de
 Dieses Paket enthält einen Cross-gcc, der es erlaubt, auf einem
@@ -37,9 +37,9 @@ i386-Rechner Code für Linux-MIPS (auf little-Endian-Rechnern) zu
 generieren.
 
 %description -l pl
-Ten pakiet zawiera skro¶ny gcc pozwalaj±cy na robienie na maszynach
-i386 binariów do uruchamiania na ostrokoñcych MIPS (architektura
-"mipsel-linux") na maszynach i386.
+Ten pakiet zawiera skro¶ny gcc pozwalaj±cy na tworzenie na innych
+maszynach binariów do uruchamiania na little-endian MIPS (architektura
+"mipsel-linux").
 
 %prep
 %setup -q -n gcc-%{version}
@@ -51,54 +51,37 @@ cd obj-%{target}
 
 CFLAGS="%{rpmcflags}" \
 CXXFLAGS="%{rpmcflags}" \
-TEXCONFIG=false ../configure \
+TEXCONFIG=false \
+../configure \
 	--prefix=%{_prefix} \
 	--infodir=%{_infodir} \
 	--mandir=%{_mandir} \
 	--bindir=%{_bindir} \
 	--libdir=%{_libdir} \
 	--libexecdir=%{_libdir} \
+	--includedir=%{arch}/include \
 	--disable-shared \
-	--enable-haifa \
-	--enable-languages="c,c++" \
-	--enable-long-long \
-	--enable-namespaces \
+	--disable-threads \
+	--enable-languages="c" \
 	--with-gnu-as \
 	--with-gnu-ld \
 	--with-system-zlib \
 	--with-multilib \
 	--without-x \
+	--build=%{_target_platform} \
+	--host=%{_target_platform} \
 	--target=%{target}
 
-PATH=$PATH:/sbin:%{_sbindir}
-
-cd ..
-#LDFLAGS_FOR_TARGET="%{rpmldflags}"
-
-%{__make} -C obj-%{target}
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_datadir},%{_bindir}}
 
-cd obj-%{target}
-PATH=$PATH:/sbin:%{_sbindir}
-
-%{__make} -C gcc install \
-	prefix=$RPM_BUILD_ROOT%{_prefix} \
-	mandir=$RPM_BUILD_ROOT%{_mandir} \
-	infodir=$RPM_BUILD_ROOT%{_infodir} \
-	gxx_include_dir=$RPM_BUILD_ROOT%{arch}/include/g++ \
+%{__make} -C obj-%{target} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-# c++filt is provided by binutils
-#rm -f $RPM_BUILD_ROOT%{_bindir}/i386-mipsel-c++filt
-
-# what is this there for???
+# don't want target's lib in this place
 rm -f $RPM_BUILD_ROOT%{_libdir}/libiberty.a
-
-# the same... make hardlink
-#ln -f $RPM_BUILD_ROOT%{arch}/bin/gcc $RPM_BUILD_ROOT%{_bindir}/%{target}-gcc
 
 %{target}-strip -g $RPM_BUILD_ROOT%{gcclib}/libgcc.a
 
@@ -107,31 +90,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/%{target}-gcc
 %attr(755,root,root) %{_bindir}/%{target}-cpp
-#%dir %{arch}/bin
-#%attr(755,root,root) %{arch}/bin/cpp
-#%attr(755,root,root) %{arch}/bin/gcc
-#%attr(755,root,root) %{arch}/bin/gcov
-#%%{arch}/include/_G_config.h
+%attr(755,root,root) %{_bindir}/%{target}-gcc
+%attr(755,root,root) %{_bindir}/%{target}-gcc-%{version}
+%attr(755,root,root) %{_bindir}/%{target}-gccbug
+%attr(755,root,root) %{_bindir}/%{target}-gcov
 %dir %{gccarch}
 %dir %{gcclib}
 %attr(755,root,root) %{gcclib}/cc1
-%attr(755,root,root) %{gcclib}/tradcpp0
-%attr(755,root,root) %{gcclib}/cpp0
 %attr(755,root,root) %{gcclib}/collect2
-#%%{gcclib}/SYSCALLS.c.X
+%{gcclib}/crt*.o
 %{gcclib}/libgcc.a
 %{gcclib}/specs*
 %dir %{gcclib}/include
 %{gcclib}/include/*.h
-#%%{gcclib}/include/iso646.h
-#%%{gcclib}/include/limits.h
-#%%{gcclib}/include/proto.h
-#%%{gcclib}/include/stdarg.h
-#%%{gcclib}/include/stdbool.h
-#%%{gcclib}/include/stddef.h
-#%%{gcclib}/include/syslimits.h
-#%%{gcclib}/include/varargs.h
-#%%{gcclib}/include/va-*.h
 %{_mandir}/man1/%{target}-gcc.1*
