@@ -34,8 +34,8 @@ generieren.
 
 %description -l pl
 Ten pakiet zawiera cross-gcc pozwalaj±cy na robienie binariów do
-uruchamiania na little-endian MIPS (architektura "mipsel-linux")
-na maszynach i386.
+uruchamiania na little-endian MIPS (architektura "mipsel-linux") na
+maszynach i386.
 
 %prep
 %setup -q -n gcc-%{version}
