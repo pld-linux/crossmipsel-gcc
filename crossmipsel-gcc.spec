@@ -5,13 +5,13 @@ Summary(pl):	Skro¶ne narzêdzia programistyczne GNU dla MIPSel - gcc
 Summary(pt_BR): Utilitários para desenvolvimento de binários da GNU - MIPSel gcc
 Summary(tr):    GNU geliþtirme araçlarý - MIPSel gcc
 Name:		crossmipsel-gcc
-Version:	3.0.3
+Version:	3.3.4
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
-# Source0-md5:	d94d66619d69d9fd27717409c8a67740
+# Source0-md5:	a1c267b34f05c8660b24251865614d8b
 BuildRequires:	crossmipsel-binutils
 BuildRequires:	flex
 BuildRequires:	bison
@@ -60,7 +60,7 @@ TEXCONFIG=false ../configure \
 	--libexecdir=%{_libdir} \
 	--disable-shared \
 	--enable-haifa \
-	--enable-languages="c,gcov" \
+	--enable-languages="c,c++" \
 	--enable-long-long \
 	--enable-namespaces \
 	--with-gnu-as \
