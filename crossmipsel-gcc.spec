@@ -83,7 +83,9 @@ rm -rf $RPM_BUILD_ROOT
 # don't want target's lib in this place
 rm -f $RPM_BUILD_ROOT%{_libdir}/libiberty.a
 
+%if 0%{!?debug:1}
 %{target}-strip -g $RPM_BUILD_ROOT%{gcclib}/libgcc.a
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
