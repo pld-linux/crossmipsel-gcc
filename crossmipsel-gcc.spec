@@ -1,5 +1,9 @@
-Summary:	Cross MIPSel GNU Binary Utility Development Utilities - gcc
-Summary(pl):	Narzêdzia programistyczne GNU Cross MIPSel - gcc
+Summary:	Cross MIPSel GNU binary utility development utilities - gcc
+Summary(es):	Utilitarios para desarrollo de binarios de la GNU - MIPSel gcc
+Summary(fr):	Utilitaires de développement binaire de GNU - MIPSel gcc
+Summary(pl):	Skro¶ne narzêdzia programistyczne GNU dla MIPSel - gcc
+Summary(pt_BR): Utilitários para desenvolvimento de binários da GNU - MIPSel gcc
+Summary(tr):    GNU geliþtirme araçlarý - MIPSel gcc
 Name:		crossmipsel-gcc
 Version:	3.0.3
 Release:	1
@@ -34,9 +38,9 @@ i386-Rechner Code für Linux-MIPS (auf little-Endian-Rechnern) zu
 generieren.
 
 %description -l pl
-Ten pakiet zawiera cross-gcc pozwalaj±cy na robienie binariów do
-uruchamiania na little-endian MIPS (architektura "mipsel-linux") na
-maszynach i386.
+Ten pakiet zawiera skro¶ny gcc pozwalaj±cy na robienie na maszynach
+i386 binariów do uruchamiania na ostrokoñcych MIPS (architektura
+"mipsel-linux") na maszynach i386.
 
 %prep
 %setup -q -n gcc-%{version}
