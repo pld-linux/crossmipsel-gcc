@@ -22,10 +22,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		cxx		0
 %define		target		mipsel-pld-linux
-%define		_prefix		/usr
 %define		arch		%{_prefix}/%{target}
-%define		gccarch		%{_prefix}/lib/gcc-lib/%{target}
-%define		gcclib		%{_prefix}/lib/gcc-lib/%{target}/%{version}
+%define		gccarch		%{_libdir}/gcc-lib/%{target}
+%define		gcclib		%{_libdir}/gcc-lib/%{target}/%{version}
 
 %description
 This package contains a cross-gcc which allows the creation of
@@ -56,6 +55,9 @@ TEXCONFIG=false ../configure \
 	--prefix=%{_prefix} \
 	--infodir=%{_infodir} \
 	--mandir=%{_mandir} \
+	--bindir=%{_bindir} \
+	--libdir=%{_libdir} \
+	--libexecdir=%{_libdir} \
 	--disable-shared \
 	--enable-haifa \
 	--enable-languages="c,gcov" \
@@ -77,7 +79,7 @@ cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/lib,%{_datadir},%{_bindir}}
+install -d $RPM_BUILD_ROOT{%{_datadir},%{_bindir}}
 
 cd obj-%{target}
 PATH=$PATH:/sbin:%{_sbindir}
