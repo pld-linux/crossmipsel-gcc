@@ -3,7 +3,7 @@ Summary(es):	Utilitarios para desarrollo de binarios de la GNU - MIPSel gcc
 Summary(fr):	Utilitaires de développement binaire de GNU - MIPSel gcc
 Summary(pl):	Skro¶ne narzêdzia programistyczne GNU dla MIPSel - gcc
 Summary(pt_BR): Utilitários para desenvolvimento de binários da GNU - MIPSel gcc
-Summary(tr):    GNU geliþtirme araçlarý - MIPSel gcc
+Summary(tr):	GNU geliþtirme araçlarý - MIPSel gcc
 Name:		crossmipsel-gcc
 Version:	3.3.5
 Release:	1
