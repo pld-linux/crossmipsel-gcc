@@ -46,6 +46,7 @@ maszynach binariów do uruchamiania na little-endian MIPS (architektura
 %setup -q -n gcc-%{version}
 
 %build
+cp -f /usr/share/automake/config.sub .
 rm -rf obj-%{target}
 install -d obj-%{target}
 cd obj-%{target}
