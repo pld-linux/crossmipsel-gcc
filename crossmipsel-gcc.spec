@@ -25,15 +25,27 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		gcclib		%{_prefix}/lib/gcc-lib/%{target}/%{version}
 
 %description
-Cross MIPSel.
+This package contains a cross-gcc which allows the creation of
+binaries to be run on little-endian Linux-MIPS (architecture
+"mipsel-linux") on i386-machines.
+
+%description -l de
+Dieses Paket enthält einen Cross-gcc, der es erlaubt, auf einem
+i386-Rechner Code für Linux-MIPS (auf little-Endian-Rechnern) zu
+generieren.
+
+%description -l pl
+Ten pakiet zawiera cross-gcc pozwalaj±cy na robienie binariów do
+uruchamiania na little-endian MIPS (architektura "mipsel-linux")
+na maszynach i386.
 
 %prep
 %setup -q -n gcc-%{version}
 
 %build
-rm -rf obj-%{target} 
+rm -rf obj-%{target}
 install -d obj-%{target}
-cd obj-%{target} 
+cd obj-%{target}
 
 CFLAGS="%{rpmcflags}" \
 CXXFLAGS="%{rpmcflags}" \
@@ -43,7 +55,7 @@ TEXCONFIG=false ../configure \
 	--mandir=%{_mandir} \
 	--disable-shared \
 	--enable-haifa \
-        --enable-languages="c,gcov" \
+	--enable-languages="c,gcov" \
 	--enable-long-long \
 	--enable-namespaces \
 	--with-gnu-as \
@@ -59,7 +71,7 @@ cd ..
 #LDFLAGS_FOR_TARGET="%{rpmldflags}"
 
 %{__make} -C obj-%{target}
-	
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/lib,%{_datadir},%{_bindir}}
