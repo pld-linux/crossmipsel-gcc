@@ -6,7 +6,7 @@ Summary(pt_BR): Utilitários para desenvolvimento de binários da GNU - MIPSel gcc
 Summary(tr):    GNU geliþtirme araçlarý - MIPSel gcc
 Name:		crossmipsel-gcc
 Version:	3.3.4
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -18,6 +18,7 @@ BuildRequires:	bison
 BuildRequires:	autoconf
 BuildRequires:	/bin/bash
 Requires:	crossmipsel-binutils >= 2.15.91.0.1-2
+Requires:	gcc-dirs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		target		mipsel-pld-linux
