@@ -33,7 +33,7 @@ binaries to be run on little-endian Linux-MIPS (architecture
 
 %description -l de
 Dieses Paket enthält einen Cross-gcc, der es erlaubt, auf einem
-i386-Rechner Code für Linux-MIPS (auf little-Endian-Rechnern) zu
+anderem Rechner Code für Linux-MIPS (auf little-Endian-Rechnern) zu
 generieren.
 
 %description -l pl
