@@ -1,9 +1,9 @@
 Summary:	Cross MIPSel GNU binary utility development utilities - gcc
-Summary(es.UTF-8):   Utilitarios para desarrollo de binarios de la GNU - MIPSel gcc
-Summary(fr.UTF-8):   Utilitaires de développement binaire de GNU - MIPSel gcc
-Summary(pl.UTF-8):   Skrośne narzędzia programistyczne GNU dla MIPSel - gcc
-Summary(pt_BR.UTF-8):   Utilitários para desenvolvimento de binários da GNU - MIPSel gcc
-Summary(tr.UTF-8):   GNU geliştirme araçları - MIPSel gcc
+Summary(es.UTF-8):	Utilitarios para desarrollo de binarios de la GNU - MIPSel gcc
+Summary(fr.UTF-8):	Utilitaires de développement binaire de GNU - MIPSel gcc
+Summary(pl.UTF-8):	Skrośne narzędzia programistyczne GNU dla MIPSel - gcc
+Summary(pt_BR.UTF-8):	Utilitários para desenvolvimento de binários da GNU - MIPSel gcc
+Summary(tr.UTF-8):	GNU geliştirme araçları - MIPSel gcc
 Name:		crossmipsel-gcc
 Version:	3.3.6
 Release:	1
