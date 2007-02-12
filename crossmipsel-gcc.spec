@@ -1,8 +1,9 @@
 Summary:	Cross MIPSel GNU binary utility development utilities - gcc
-Summary(es):	Utilitarios para desarrollo de binarios de la GNU - MIPSel gcc
-Summary(fr):	Utilitaires de développement binaire de GNU - MIPSel gcc
-Summary(pl):	Skro¶ne narzêdzia programistyczne GNU dla MIPSel - gcc
-Summary(tr):	GNU geliþtirme araçlarý - MIPSel gcc
+Summary(es.UTF-8):   Utilitarios para desarrollo de binarios de la GNU - MIPSel gcc
+Summary(fr.UTF-8):   Utilitaires de dÃ©veloppement binaire de GNU - MIPSel gcc
+Summary(pl.UTF-8):   SkroÅ›ne narzÄ™dzia programistyczne GNU dla MIPSel - gcc
+Summary(pt_BR.UTF-8):   UtilitÃ¡rios para desenvolvimento de binÃ¡rios da GNU - MIPSel gcc
+Summary(tr.UTF-8):   GNU geliÅŸtirme araÃ§larÄ± - MIPSel gcc
 Name:		crossmipsel-gcc
 Version:	3.3.6
 Release:	1
@@ -32,14 +33,14 @@ This package contains a cross-gcc which allows the creation of
 binaries to be run on little-endian Linux-MIPS (architecture
 "mipsel-linux") on other machines.
 
-%description -l de
-Dieses Paket enthält einen Cross-gcc, der es erlaubt, auf einem
-anderem Rechner Code für Linux-MIPS (auf little-Endian-Rechnern) zu
+%description -l de.UTF-8
+Dieses Paket enthÃ¤lt einen Cross-gcc, der es erlaubt, auf einem
+anderem Rechner Code fÃ¼r Linux-MIPS (auf little-Endian-Rechnern) zu
 generieren.
 
-%description -l pl
-Ten pakiet zawiera skro¶ny gcc pozwalaj±cy na tworzenie na innych
-maszynach binariów do uruchamiania na little-endian MIPS (architektura
+%description -l pl.UTF-8
+Ten pakiet zawiera skroÅ›ny gcc pozwalajÄ…cy na tworzenie na innych
+maszynach binariÃ³w do uruchamiania na little-endian MIPS (architektura
 "mipsel-linux").
 
 %prep
