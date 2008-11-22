@@ -5,13 +5,13 @@ Summary(pl.UTF-8):	Skrośne narzędzia programistyczne GNU dla MIPSel - gcc
 Summary(pt_BR.UTF-8):	Utilitários para desenvolvimento de binários da GNU - MIPSel gcc
 Summary(tr.UTF-8):	GNU geliştirme araçları - MIPSel gcc
 Name:		crossmipsel-gcc
-Version:	3.3.6
+Version:	3.4.6
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
-# Source0-md5:	6936616a967da5a0b46f1e7424a06414
+# Source0-md5:	4a21ac777d4b5617283ce488b808da7b
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
@@ -24,9 +24,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		target		mipsel-pld-linux
 %define		arch		%{_prefix}/%{target}
-%define		gccarch		%{_libdir}/gcc-lib/%{target}
-%define		gcclib		%{_libdir}/gcc-lib/%{target}/%{version}
-%define		_noautostrip	.*%{gcclib}/libgcc\\.a
+%define		gccarch		%{_libdir}/gcc/%{target}
+%define		gcclib		%{gccarch}/%{version}
+
+
+%define		_noautostrip	.*/libgc.*\\.a
 
 %description
 This package contains a cross-gcc which allows the creation of
@@ -68,8 +70,10 @@ TEXCONFIG=false \
 	--enable-languages="c" \
 	--with-gnu-as \
 	--with-gnu-ld \
+	--with-demangler-in-ld \
 	--with-system-zlib \
-	--with-multilib \
+	--disable-multilib \
+	--disable-nls \
 	--without-x \
 	--build=%{_target_platform} \
 	--host=%{_target_platform} \
@@ -110,3 +114,5 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{gcclib}/include
 %{gcclib}/include/*.h
 %{_mandir}/man1/%{target}-gcc.1*
+%{_mandir}/man1/%{target}-gcov.1*
+%{_mandir}/man1/%{target}-cpp.1*
