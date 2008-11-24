@@ -27,7 +27,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		gccarch		%{_libdir}/gcc/%{target}
 %define		gcclib		%{gccarch}/%{version}
 
-
 %define		_noautostrip	.*/libgc.*\\.a
 
 %description
