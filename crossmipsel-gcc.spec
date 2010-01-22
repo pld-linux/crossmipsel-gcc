@@ -12,12 +12,16 @@ License:	GPL
 Group:		Development/Languages
 Source0:	ftp://gcc.gnu.org/pub/gcc/releases/gcc-%{version}/gcc-%{version}.tar.bz2
 # Source0-md5:	4a21ac777d4b5617283ce488b808da7b
+BuildRequires:	/bin/bash
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	crossmipsel-binutils >= 2.15.91.0.1-2
 BuildRequires:	flex
-BuildRequires:	/bin/bash
+BuildRequires:	gettext-devel
+BuildRequires:	gtk+2-devel
+BuildRequires:	libtool
+BuildRequires:	pkgconfig
 Requires:	crossmipsel-binutils >= 2.15.91.0.1-2
 Requires:	gcc-dirs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
