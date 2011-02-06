@@ -87,9 +87,7 @@ TEXCONFIG=false \
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%undefine _smp_mflags
-
-%{__make} -C obj-%{target} install \
+%{__make} -j1 -C obj-%{target} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 # don't want target's lib in this place
