@@ -18,7 +18,7 @@ BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	crossmipsel-binutils >= 2.15.91.0.1-2
 BuildRequires:	flex
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	gtk+2-devel
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
